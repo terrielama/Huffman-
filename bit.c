@@ -5,7 +5,7 @@ void fromTextToBit(char *s)
     int i;
 
   //ouvrir le fichier
-    FILE *fp = fopen("//fichier txt", "w"); 
+    FILE *fp = fopen("data/bin_origin.txt, "w"); 
 
     if (!fp)
     {
