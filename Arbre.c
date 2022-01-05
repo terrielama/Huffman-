@@ -58,7 +58,7 @@ Liste_Nœud *huffListe(struct Liste *liste, int i)
 
     Liste_Nœud *huffmanListe;
 
-    huffmanListe = creationNœudLiset(creation_nœud_arbre(liste->c, liste->occ), i);
+    huffmanListe = creationNœudListe(creation_nœud_arbre(liste->c, liste->occ), i);
     liste = liste->suivant;
     huffmanListe->suivant = huffListe(liste, i + 1);
 
