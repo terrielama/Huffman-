@@ -20,7 +20,7 @@ void printCode(char *code, char c)
 
     if (!f)
     {
-        printf("Unable to create dico file.\n");
+        printf("Impossible de créer le fichier dico.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -44,5 +44,5 @@ void getDico(struct Noeud *arbre, char *code)
     code[strlen(code) - 1] = '\0';
     //code[strlen(code) - 1] = '\0';
 
-    //memset(code, '\0', 256);
+  
 }
