@@ -16,9 +16,9 @@ void print_arbre(Arbre arbre)
 }
 
 // Création de l'arbre :
-Node *creation_noeud_arbre(char val, int occ)
+Noeud *creation_noeud_arbre(char val, int occ)
 {
-    Node *arbre = (Noeud *)malloc(sizeof(Noeud));
+    Noeud *arbre = (Noeud *)malloc(sizeof(Noeud));
     Arbre->donnee = val;
     arbre->occ = occ;
     arbre->gauche = NULL;
@@ -27,7 +27,7 @@ Node *creation_noeud_arbre(char val, int occ)
 }
 
 /* Libération de la mémoire */
-void freeArbre(struct Node *arbre)
+void freeArbre(struct Noeud *arbre)
 {
     if (!arbre)
         return;
@@ -39,24 +39,24 @@ void freeArbre(struct Node *arbre)
 }
 
 //creation de liste
-Liste_Nœud *creationNodeListe(struct Node *arbre, int i)
+Liste_Noeud *creationNoeudListe(struct Noeud *arbre, int i)
 {
-    struct Liste_Node *nouv_elem;
-    nouv_elem = (Liste_Node *)malloc(sizeof(Liste_Nœud));
+    struct Liste_Noeud *nouv_elem;
+    nouv_elem = (Liste_Noeud *)malloc(sizeof(Liste_Noeud));
     nouv_elem->donnee = arbre;
     nouv_elem->suivant = NULL;
     nouv_elem->i = i;
     return nouv_elem;
 }
 
-Liste_Nœud *huffListe(struct Liste *liste, int i)
+Liste_Noeud *huffListe(struct Liste *liste, int i)
 {
     if (liste == NULL)
     {
         return NULL;
     }
 
-    Liste_Nœud *huffmanListe;
+    Liste_Noeud *huffmanListe;
 
     huffmanListe = creationNœudListe(creation_nœud_arbre(liste->c, liste->occ), i);
     liste = liste->suivant;
@@ -67,7 +67,7 @@ Liste_Nœud *huffListe(struct Liste *liste, int i)
 
 
 //afficher la liste
-void afficheHuffmanListe(struct Liste_Nœud *huffListe)
+void afficheHuffmanListe(struct Liste_Noeud *huffListe)
 {
     while (huffListe)
     {
@@ -78,30 +78,30 @@ void afficheHuffmanListe(struct Liste_Nœud *huffListe)
 }
 
 //envoi de la liste
-void envoi(struct Liste_Nœud **t_ref, Nœud *nouv_donnee, int i)
+void envoi(struct Liste_Noeud **t_ref, Noeud *nouv_donnee, int i)
 {
-    struct Liste_Nœud *nouv_nœud = (struct Liste_Nœud *)malloc(sizeof(struct Liste_Nœud));
+    struct Liste_Noeud *nouv_noeud = (struct Liste_Noeud *)malloc(sizeof(struct Liste_Noeud));
 
-    nouv_nœud->donnee = nouv_donnee;
-    nouv_nœud->i = i;
+    nouv_noeud->donnee = nouv_donnee;
+    nouv_noeud->i = i;
 
-    nouv_nœud->suivant = (*t_ref);
+    nouv_noeud->suivant = (*t_ref);
 
-    (*t_ref) = nouv_nœud;
+    (*t_ref) = nouv_noeud;
 }
 
 //Fusionnez les deux premiers éléments minimum du tableau
-void fusionDesDeuxMin(struct Liste_Nœud **huffListe)
+void fusionDesDeuxMin(struct Liste_Noeud **huffListe)
 {
     if (!huffListe || !(*huffListe)->suivant)
     {
         return;
     }
 
-    struct Liste_Nœud *temp = *huffListe;
+    struct Liste_Noeud *temp = *huffListe;
 
-    struct Liste_Nœud *min1 = *huffListe;
-    struct Liste_Nœud *min2 = (*huffListe)->suivant;
+    struct Liste_Noeud *min1 = *huffListe;
+    struct Liste_Noeud *min2 = (*huffListe)->suivant;
 
     int max_i = 0;
 
@@ -131,17 +131,17 @@ void fusionDesDeuxMin(struct Liste_Nœud **huffListe)
 
  
 
-    Nœud *arbre = creation_nœud_arbre('\0', min1->donnee->occ + min2->donnee->occ);
+    Noeud *arbre = creation_noeud_arbre('\0', min1->donnee->occ + min2->donnee->occ);
     arbre->gauche = min1->donnee;
     arbre->droite = min2->donnee;
 
     envoi(huffListe, arbre, max_i + 1);
 
-    supprNœud(huffListe, min1->i);
-    supprNœud(huffListe, min2->i);
+    supprNoeud(huffListe, min1->i);
+    supprNoeud(huffListe, min2->i);
 }
 
-Liste_Nœud *huffman(struct Liste_Nœud *liste)
+Liste_Nœud *huffman(struct Liste_Noeud *liste)
 {
     while (liste->suivant)
     {
@@ -153,13 +153,3 @@ Liste_Nœud *huffman(struct Liste_Nœud *liste)
 
     return liste;
 }
-
-
-
-
-
-
-
-
-
-
