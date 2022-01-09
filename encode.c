@@ -6,7 +6,7 @@ char *getCode(char c, const char *dico)
 
     if (!f)
     {
-        printf("can't read file.\n");
+        printf("impossible de lire.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -74,7 +74,7 @@ void encode(const char *input)
 
     if (!f)
     {
-        printf("Unable to read file.\n");
+        printf("Impossible de lire le fichier..\n");
         exit(EXIT_FAILURE);
     }
 
@@ -86,6 +86,3 @@ void encode(const char *input)
             
        ecrireCode(getCode(c, "data/dico.txt"));
     }
-
-    fclose(f);
-}
