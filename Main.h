@@ -7,29 +7,29 @@
 #include <string.h>
 #include <assert.h>
 
-typedef struct Node
+typedef struct Noeud
 {
     int occ;
     char donnee;
-    struct Node *gauche;
-    struct Node *droite;
-} Node;
+    struct Noeud *gauche;
+    struct Noeud *droite;
+} Noeud;
 
 typedef struct Liste
 {
     struct Liste *suivant;
     long occ;
     char c;
-    //struct Node *arbre;
+    //struct Noeud *arbre;
     int i;
 } Liste;
 
-typedef struct Liste_Node
+typedef struct Liste_Noeud
 {
-    struct Node*donnee;
-    struct Liste_Node *suivant;
+    struct Noeud*donnee;
+    struct Liste_Noeud *suivant;
     int i;
-}Liste_Node;
+}Liste_Noeud;
 
 #include "bit.h"
 #include "occurence.h"
@@ -39,6 +39,6 @@ typedef struct Liste_Node
 
 char *fichierToString(const char *nomDeFichier);
 void afficheListe(struct Liset *liste);
-void supprNode(struct Liste_Node **t_ref, int c);
+void supprNoeud(struct Liste_Noeud **t_ref, int c);
 
 #endif
